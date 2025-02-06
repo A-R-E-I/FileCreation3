@@ -75,7 +75,16 @@ def PerformAgain():
             print("Enter Y or N");
             PerformAgain()
 
-        
+def CollectInfo():
+    print("Let's begin by creating a username and password for your file.");
+    username = str(input("Username: "));
+    password = str(input("Password: "));
+    WriteToFile(username,password,whichfilename);
+
+def WriteToFile(name,passwd,thefile):
+    adminfile = open(thefile,"w");
+    adminfile.write(name + "," + passwd);
+    adminfile.close();
 
 if __name__ == "__main__":
     main();
