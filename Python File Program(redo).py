@@ -33,9 +33,7 @@ def CheckInfo(optionwhich,pointcheck):
                         print("Goodbye");
                         sys.exit();
                         
-                CheckFile();
-                whichfilename = whichfilename + Extension;        
-                FileConnectivity();
+                FileConnectivity(whichfilename);
         case default:
             print("Houston...we have a problem");
             sys.exit();
@@ -56,7 +54,7 @@ def CheckFile():
             print("please enter 1, 2, 3, or 4");
             CheckFile();
 
-def FileConnectivity():
+def FileConnectivity(Yourfilename):
     fileDir = os.path.dirname(os.path.realpath("__file__"));
     fileexist = bool(path.exists(whichfilename));
 
@@ -64,7 +62,8 @@ def FileConnectivity():
         adminfile = open(whichfilename,"r");
         print("File exist");
     else:
-        
+        CheckFile();
+        Yourfilename = Yourfilename + Extension; 
         adminfile = open(whichfilename,"x");
         print("text file created")
 
