@@ -33,14 +33,16 @@ def CheckInfo(optionwhich,pointcheck):
                         print("Goodbye");
                         sys.exit();
                         
-                FileConnectivity(whichfilename);
+                CheckFile();
+                whichfilename = whichfilename + Extension;        
+                FileConnectivity();
         case default:
             print("Houston...we have a problem");
             sys.exit();
 
 def CheckFile():
     global Extension;
-    Filetype = str(input("what kind of file do you want (1. doc, 2. text, 3. excel, 4. pdf)"));
+    Filetype = str(input("what kind of file?(1. doc, 2. text, 3. excel, 4. pdf)"));
     match(Filetype):
         case "1":
             Extension = ".docx";
@@ -54,17 +56,15 @@ def CheckFile():
             print("please enter 1, 2, 3, or 4");
             CheckFile();
 
-def FileConnectivity(Yourfilename):
+def FileConnectivity():
     fileDir = os.path.dirname(os.path.realpath("__file__"));
-    fileexist = bool(path.exists(Yourfilename));
+    fileexist = bool(path.exists(whichfilename));
 
     if(fileexist == True):
-        adminfile = open(Yourfilename,"r");
+        adminfile = open(whichfilename,"r");
         print("File exist");
     else:
-        CheckFile();
-        Yourfilename = Yourfilename + Extension; 
-        adminfile = open(Yourfilename,"x");
+        adminfile = open(whichfilename,"x");
         print("file created")
 
     adminfile.close();
