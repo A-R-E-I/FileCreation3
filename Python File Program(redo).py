@@ -43,7 +43,7 @@ def CheckFile():
     Filetype = str(input("what kind of file do you want (1. doc, 2. text, 3. excel, 4. pdf)"));
     match(Filetype):
         case "1":
-            Extension = ".doc";
+            Extension = ".docx";
         case "2":
             Extension = ".txt";
         case "3":
@@ -56,16 +56,16 @@ def CheckFile():
 
 def FileConnectivity(Yourfilename):
     fileDir = os.path.dirname(os.path.realpath("__file__"));
-    fileexist = bool(path.exists(whichfilename));
+    fileexist = bool(path.exists(Yourfilename));
 
     if(fileexist == True):
-        adminfile = open(whichfilename,"r");
+        adminfile = open(Yourfilename,"r");
         print("File exist");
     else:
         CheckFile();
         Yourfilename = Yourfilename + Extension; 
-        adminfile = open(whichfilename,"x");
-        print("text file created")
+        adminfile = open(Yourfilename,"x");
+        print("file created")
 
     adminfile.close();
 
