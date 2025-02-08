@@ -33,11 +33,28 @@ def CheckInfo(optionwhich,pointcheck):
                         print("Goodbye");
                         sys.exit();
 
-                whichfilename = whichfilename + ".txt";
+                CheckFile();
+                whichfilename = whichfilename + Extension;
                 FileConnectivity();
         case default:
             print("Houston...we have a problem");
             sys.exit();
+
+def CheckFile():
+    global Extension;
+    Filetype = str(input("what kind of file?(1. doc, 2. text, 3. excel, 4. pdf)"));
+    match(Filetype):
+        case "1":
+            Extension = ".docx";
+        case "2":
+            Extension = ".txt";
+        case "3":
+            Extension = ".xlsx";
+        case "4":
+            Extension = ".pdf";
+        case default:
+            print("please enter 1, 2, 3, or 4");
+            CheckFile();
 
 def FileConnectivity():
     fileDir = os.path.dirname(os.path.realpath("__file__"));
@@ -57,11 +74,12 @@ def FileConnectivity():
                 PerformAgain();
             case "N":
                 print("Thank you");
-                adminfile.close();
                 sys.exit();
             case default:
                 print("Enter Y or N");
                 FileConnectivity()
+                
+        adminfile.close();
         
 def PerformAgain():
     ifstart = str(input("Would you like to performanother action, (Y)es or (N)o?")).upper();
